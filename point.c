@@ -9,27 +9,27 @@ struct Point {
 struct Point* point_create(void){
   struct Point* new_point = calloc(1, sizeof(struct Point));
   return new_point;
-};
+}
 
 void point_destroy(Point *point){
     free(point);
-};
+}
 
 int point_get_x(const Point *point) {
     return point->x;
-};
+}
 
 int point_get_y(const Point *point){
     return point->y;
-};
+}
 
 void point_set_x(Point *point, int x){
     point->x = x;
-};
+}
 
 void point_set_y(Point *point, int y){
     point->y = y;
-};
+}
 
 void point_move(Point *point, int dx, int dy){
     point->x = point->x + dx;
