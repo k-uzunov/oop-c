@@ -8,7 +8,7 @@ typedef struct Point Point;
 /* ************************************************************************** */
 
 /* Creates a pointer to structure Point and allocates memory */
-Point* point_create();
+Point* point_create(void);
 /* Frees memory of a point */
 void point_destroy(Point* point);
 /* Gets a point's x coordinate */

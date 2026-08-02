@@ -6,7 +6,7 @@ struct Point {
     int y;
 };
 
-struct Point* point_create(){
+struct Point* point_create(void){
   struct Point* new_point = calloc(1, sizeof(struct Point));
   return new_point;
 };
