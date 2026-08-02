@@ -15,11 +15,11 @@ void point_destroy(Point *point){
     free(point);
 };
 
-int point_get_x(Point *point) {
+int point_get_x(const Point *point) {
     return point->x;
 };
 
-int point_get_y(Point *point){
+int point_get_y(const Point *point){
     return point->y;
 };
 

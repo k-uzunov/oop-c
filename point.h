@@ -15,9 +15,9 @@ Point* point_create(void);
 /* Frees memory of a point */
 void point_destroy(Point* point);
 /* Gets a point's x coordinate */
-int point_get_x(Point* point);
+int point_get_x(const Point* point);
 /* Gets a point's y coordinate */
-int point_get_y(Point* point);
+int point_get_y(const Point* point);
 /* Sets a point's x coordinate */
 void point_set_x(Point* point, int x);
 /* Sets a point's y coordinate */
