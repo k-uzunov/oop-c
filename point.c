@@ -32,6 +32,6 @@ void point_set_y(Point *point, int y){
 };
 
 void point_move(Point *point, int dx, int dy){
-    point->x = dx;
-    point->y = dy;
+    point->x = point->x + dx;
+    point->y = point->y + dy;
 }
