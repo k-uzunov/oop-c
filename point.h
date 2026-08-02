@@ -1,3 +1,6 @@
+#ifndef POINT_H
+#define POINT_H
+
 /* Define opaque structure */
 typedef struct Point Point;
 
@@ -21,3 +24,5 @@ void point_set_x(Point* point, int x);
 void point_set_y(Point* point, int y);
 /* Moves a point */
 void point_move(Point* point, int dx, int dy);
+
+#endif // POINT_H
