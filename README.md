@@ -1,7 +1,7 @@
 # oop_c
 Exploring OOP by building objects from first principles in C. I will use, as many others have done, simple geometric concepts such as points, rectangles, circles etc.
 
-[!Note]
+> [!Note]
 > This is not a guide or tutorial, this is just me learning by doing. That said, if you find it helpful, fell free to use this repo as you see fit.
 
 ## Tasks
