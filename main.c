@@ -30,4 +30,7 @@ int main() {
 
     printf("Point 1 coordinates are: %d, %d\n", point_get_x(p1), point_get_y(p1));
     printf("Point 2 coordinates are: %d, %d\n", point_get_x(p2), point_get_y(p2));
+
+    point_destroy(p1);
+    point_destroy(p2);
 }
