@@ -1,7 +1,7 @@
 #include "point.h"
 #include <stdio.h>
 
-int main() {
+int main(void) {
     Point* p1 = point_create();
     Point* p2 = point_create();
 
