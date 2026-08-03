@@ -46,10 +46,10 @@ int rect_set_points(Rectangle* self, Point* a, Point* b, Point* c, Point* d){
     if (point_get_y(d) != point_get_y(a)) {
         return -4;
     }
-    self->_points_[0] = a;
-    self->_points_[1] = b;
-    self->_points_[2] = c;
-    self->_points_[3] = d;
+    self->points__[0] = a;
+    self->points__[1] = b;
+    self->points__[2] = c;
+    self->points__[3] = d;
     return 0;
 }
 
@@ -57,40 +57,40 @@ int rect_set_points(Rectangle* self, Point* a, Point* b, Point* c, Point* d){
 int rect_set_point(Rectangle* self, char point_letter, Point* point){
     switch (point_letter) {
         case 'a':
-            if (self->_points_[1] != NULL && point_get_y(self->_points_[1]) != point_get_y(point)) {
+            if (self->points__[1] != NULL && point_get_y(self->points__[1]) != point_get_y(point)) {
                 return -1;
             }
-            if (self->_points_[3] != NULL && point_get_x(self->_points_[3])!=point_get_x(point)) {
+            if (self->points__[3] != NULL && point_get_x(self->points__[3])!=point_get_x(point)) {
                 return -2;
             }
-            self->_points_[0] = point;
+            self->points__[0] = point;
             break;
         case 'b':
-            if (self->_points_[0]!=NULL && point_get_y(self->_points_[1]) != point_get_y(point)) {
+            if (self->points__[0]!=NULL && point_get_y(self->points__[1]) != point_get_y(point)) {
                 return -3;
             }
-            if (self->_points_[2]!=NULL && point_get_x(self->_points_[2])!= point_get_x(point)) {
+            if (self->points__[2]!=NULL && point_get_x(self->points__[2])!= point_get_x(point)) {
                 return -4;
             }
-            self->_points_[1] = point;
+            self->points__[1] = point;
             break;
         case 'c':
-            if (self->_points_[1]!=NULL && point_get_x(self->_points_[1]) != point_get_x(point)) {
+            if (self->points__[1]!=NULL && point_get_x(self->points__[1]) != point_get_x(point)) {
                 return -5;
             }
-            if (self->_points_[3]!=NULL && point_get_y(self->_points_[3])!= point_get_y(point)) {
+            if (self->points__[3]!=NULL && point_get_y(self->points__[3])!= point_get_y(point)) {
                 return -6;
             }
-            self->_points_[2] = point;
+            self->points__[2] = point;
             break;
         case 'd':
-            if (self->_points_[0]!=NULL && point_get_x(self->_points_[0]) != point_get_x(point)) {
+            if (self->points__[0]!=NULL && point_get_x(self->points__[0]) != point_get_x(point)) {
                 return -7;
             }
-            if (self->_points_[2]!=NULL && point_get_y(self->_points_[2])!= point_get_y(point)) {
+            if (self->points__[2]!=NULL && point_get_y(self->points__[2])!= point_get_y(point)) {
                 return -8;
             }
-            self->_points_[3] = point;
+            self->points__[3] = point;
             break;
         default:
             return -9;
