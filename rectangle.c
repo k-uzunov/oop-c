@@ -134,12 +134,14 @@ int rect_get_height(const Rectangle* self){
 }
 
 /* Finds the center point of a rectangle. Since points are integers if two or
- * all sides are odd lengts the center will be off. */
+ * all sides are odd lengts the center will be off.
+ * The function creates a Point object, but it is the caller's job to free the
+ * memory when it is no longer needed. */
 Point* rect_get_center(const Rectangle* self){
-    int width_center = self->get_width(self) / 2;
-    int height_center = self->get_height(self) / 2;
+    int width_center = self->get_width(self) / 2 + point_get_x(self->get_point(self, 'd'));
+    int height_center = self->get_height(self) / 2 + point_get_y(self->get_point(self, 'c'));
     Point *center_point = point_create();
-    point_set_x(center_point, width_center);
+    point_set_x(center_point, width_center );
     point_set_y(center_point, height_center);
 
     return center_point;
