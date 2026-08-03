@@ -57,37 +57,37 @@ int rect_set_points(Rectangle* self, Point* a, Point* b, Point* c, Point* d){
 int rect_set_point(Rectangle* self, char point_letter, Point* point){
     switch (point_letter) {
         case 'a':
-            if (self->points__[1] != NULL && point_get_y(self->points__[1]) != point_get_y(point)) {
+            if (self->points__[1] != NULL && point_get_x(self->points__[1]) != point_get_x(point)) {
                 return -1;
             }
-            if (self->points__[3] != NULL && point_get_x(self->points__[3])!=point_get_x(point)) {
+            if (self->points__[3] != NULL && point_get_y(self->points__[3])!=point_get_y(point)) {
                 return -2;
             }
             self->points__[0] = point;
             break;
         case 'b':
-            if (self->points__[0]!=NULL && point_get_y(self->points__[1]) != point_get_y(point)) {
+            if (self->points__[0]!=NULL && point_get_x(self->points__[0]) != point_get_x(point)) {
                 return -3;
             }
-            if (self->points__[2]!=NULL && point_get_x(self->points__[2])!= point_get_x(point)) {
+            if (self->points__[2]!=NULL && point_get_y(self->points__[2])!= point_get_y(point)) {
                 return -4;
             }
             self->points__[1] = point;
             break;
         case 'c':
-            if (self->points__[1]!=NULL && point_get_x(self->points__[1]) != point_get_x(point)) {
+            if (self->points__[1]!=NULL && point_get_y(self->points__[1]) != point_get_y(point)) {
                 return -5;
             }
-            if (self->points__[3]!=NULL && point_get_y(self->points__[3])!= point_get_y(point)) {
+            if (self->points__[3]!=NULL && point_get_x(self->points__[3])!= point_get_x(point)) {
                 return -6;
             }
             self->points__[2] = point;
             break;
         case 'd':
-            if (self->points__[0]!=NULL && point_get_x(self->points__[0]) != point_get_x(point)) {
+            if (self->points__[0]!=NULL && point_get_y(self->points__[0]) != point_get_y(point)) {
                 return -7;
             }
-            if (self->points__[2]!=NULL && point_get_y(self->points__[2])!= point_get_y(point)) {
+            if (self->points__[2]!=NULL && point_get_x(self->points__[2])!= point_get_x(point)) {
                 return -8;
             }
             self->points__[3] = point;
