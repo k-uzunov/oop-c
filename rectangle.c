@@ -17,7 +17,7 @@ void rect_destroy(Rectangle* self);
 
 Rectangle* rect_create(void){
     struct Rectangle* new_rect = calloc(1, sizeof(struct Rectangle));
-    new_rect->__points = calloc(4, sizeof(Point*));
+    new_rect->points__ = calloc(4, sizeof(Point*));
     new_rect->set_points = &rect_set_points;
     new_rect->set_point = &rect_set_point;
     new_rect->get_points = &rect_get_points;
@@ -46,10 +46,10 @@ int rect_set_points(Rectangle* self, Point* a, Point* b, Point* c, Point* d){
     if (point_get_y(d) != point_get_y(a)) {
         return -4;
     }
-    self->__points[0] = a;
-    self->__points[1] = b;
-    self->__points[2] = c;
-    self->__points[3] = d;
+    self->_points_[0] = a;
+    self->_points_[1] = b;
+    self->_points_[2] = c;
+    self->_points_[3] = d;
     return 0;
 }
 
@@ -57,40 +57,40 @@ int rect_set_points(Rectangle* self, Point* a, Point* b, Point* c, Point* d){
 int rect_set_point(Rectangle* self, char point_letter, Point* point){
     switch (point_letter) {
         case 'a':
-            if (self->__points[1] != NULL && point_get_y(self->__points[1]) != point_get_y(point)) {
+            if (self->_points_[1] != NULL && point_get_y(self->_points_[1]) != point_get_y(point)) {
                 return -1;
             }
-            if (self->__points[3] != NULL && point_get_x(self->__points[3])!=point_get_x(point)) {
+            if (self->_points_[3] != NULL && point_get_x(self->_points_[3])!=point_get_x(point)) {
                 return -2;
             }
-            self->__points[0] = point;
+            self->_points_[0] = point;
             break;
         case 'b':
-            if (self->__points[0]!=NULL && point_get_y(self->__points[1]) != point_get_y(point)) {
+            if (self->_points_[0]!=NULL && point_get_y(self->_points_[1]) != point_get_y(point)) {
                 return -3;
             }
-            if (self->__points[2]!=NULL && point_get_x(self->__points[2])!= point_get_x(point)) {
+            if (self->_points_[2]!=NULL && point_get_x(self->_points_[2])!= point_get_x(point)) {
                 return -4;
             }
-            self->__points[1] = point;
+            self->_points_[1] = point;
             break;
         case 'c':
-            if (self->__points[1]!=NULL && point_get_x(self->__points[1]) != point_get_x(point)) {
+            if (self->_points_[1]!=NULL && point_get_x(self->_points_[1]) != point_get_x(point)) {
                 return -5;
             }
-            if (self->__points[3]!=NULL && point_get_y(self->__points[3])!= point_get_y(point)) {
+            if (self->_points_[3]!=NULL && point_get_y(self->_points_[3])!= point_get_y(point)) {
                 return -6;
             }
-            self->__points[2] = point;
+            self->_points_[2] = point;
             break;
         case 'd':
-            if (self->__points[0]!=NULL && point_get_x(self->__points[0]) != point_get_x(point)) {
+            if (self->_points_[0]!=NULL && point_get_x(self->_points_[0]) != point_get_x(point)) {
                 return -7;
             }
-            if (self->__points[2]!=NULL && point_get_y(self->__points[2])!= point_get_y(point)) {
+            if (self->_points_[2]!=NULL && point_get_y(self->_points_[2])!= point_get_y(point)) {
                 return -8;
             }
-            self->__points[3] = point;
+            self->_points_[3] = point;
             break;
         default:
             return -9;
@@ -100,23 +100,23 @@ int rect_set_point(Rectangle* self, char point_letter, Point* point){
 
 /* Get all 4 points. Returns array of points */
 Point** rect_get_points(const Rectangle* rect){
-    return rect->__points;
+    return rect->points__;
 }
 
 /* Get specific point */
 Point* rect_get_point(const Rectangle* self, char point_letter){
     switch (point_letter) {
         case 'a':
-            return self->__points[0];
+            return self->points__[0];
             break;
         case 'b':
-            return self->__points[1];
+            return self->points__[1];
             break;
         case 'c':
-            return self->__points[2];
+            return self->points__[2];
             break;
         case 'd':
-            return self->__points[3];
+            return self->points__[3];
             break;
         default:
             return NULL;
@@ -125,12 +125,12 @@ Point* rect_get_point(const Rectangle* self, char point_letter){
 
 /* Calculates rectangle width */
 int rect_get_width(const Rectangle* self){
-    return point_get_x(self->__points[0]) - point_get_x(self->__points[3]);
+    return point_get_x(self->points__[0]) - point_get_x(self->points__[3]);
 }
 
 /* Calculates rectangle height */
 int rect_get_height(const Rectangle* self){
-    return point_get_y(self->__points[0]) - point_get_y(self->__points[1]);
+    return point_get_y(self->points__[0]) - point_get_y(self->points__[1]);
 }
 
 /* Finds the center point of a rectangle. Since points are integers if two or
@@ -158,27 +158,27 @@ int rect_get_circ(const Rectangle* self){
 /* Rotates rectangle */
 void rect_rotate(Rectangle* self){
     Point* temp = point_create();
-    point_set_x(temp, point_get_x(self->__points[3]));
-    point_set_y(temp, point_get_y(self->__points[3]));
+    point_set_x(temp, point_get_x(self->points__[3]));
+    point_set_y(temp, point_get_y(self->points__[3]));
 
-    point_set_x(self->__points[3], point_get_x(self->__points[0]));
-    point_set_y(self->__points[3], point_get_y(self->__points[0]));
+    point_set_x(self->points__[3], point_get_x(self->points__[0]));
+    point_set_y(self->points__[3], point_get_y(self->points__[0]));
 
-    point_set_x(self->__points[0], point_get_x(self->__points[1]));
-    point_set_y(self->__points[0], point_get_y(self->__points[1]));
+    point_set_x(self->points__[0], point_get_x(self->points__[1]));
+    point_set_y(self->points__[0], point_get_y(self->points__[1]));
 
-    point_set_x(self->__points[1], point_get_x(self->__points[2]));
-    point_set_y(self->__points[1], point_get_y(self->__points[2]));
+    point_set_x(self->points__[1], point_get_x(self->points__[2]));
+    point_set_y(self->points__[1], point_get_y(self->points__[2]));
 
-    point_set_x(self->__points[2], point_get_x(temp));
-    point_set_y(self->__points[2], point_get_y(temp));
+    point_set_x(self->points__[2], point_get_x(temp));
+    point_set_y(self->points__[2], point_get_y(temp));
 }
 
 void rect_destroy(Rectangle* self){
     for (int i = 0; i < 4; i++) {
-        point_destroy(self->__points[i]);
+        point_destroy(self->points__[i]);
     }
 
-    free(self->__points);
+    free(self->points__);
     free(self);
 }

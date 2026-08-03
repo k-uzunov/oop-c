@@ -11,16 +11,19 @@
  * wise direction.                                                           *
  * ************************************************************************* */
 /* ************************************************************************* *
- * The `__points` is hidden by convention. Between using opaque structure    *
+ * The `points__` is hidden by convention. Between using opaque structure    *
  * and wrapper functions for the methods and exposing the structure layout   *
  * and hiding members by convention I chose hiding by convention with        *
- * double underscore (inspired by Python) to save some work on writing ad-   *
- * ditional functions, also to avoid mistakes, forgotten wrappers, wrap-     *
- * pers pointing to deleted methods etc.                                     *
+ * two underscores trailing the identifier (inspired by Python) to save some *
+ *  work on writing additional functions, also to avoid mistakes, forgotten  *
+ * wrappers, wrappers pointing to deleted methods etc.                       *
+ *                                                                           *
+ * !Swiched from leading to railing undescores, because leading underscores  *
+ * are reserved for compiler use.                                            *
  * ************************************************************************* */
 
 typedef struct Rectangle{
-    Point** __points;
+    Point** points__;
     int (*set_points)(struct Rectangle*, Point*, Point*, Point*, Point*);
     int (*set_point)(struct Rectangle*, char, Point*);
     Point** (*get_points)(const struct Rectangle* );
