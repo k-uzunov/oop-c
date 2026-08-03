@@ -172,6 +172,8 @@ void rect_rotate(Rectangle* self){
 
     point_set_x(self->points__[2], point_get_x(temp));
     point_set_y(self->points__[2], point_get_y(temp));
+
+    point_destroy(temp);
 }
 
 void rect_destroy(Rectangle* self){
